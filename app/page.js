@@ -1,3 +1,4 @@
+export const revalidate = 30 
 import Image from "next/image";
 import styles from "./page.module.css";
 import { client } from '@/sanity'
@@ -7,7 +8,7 @@ const newsQuery = `*[_type == "news"]{
 }`
 
 export default async function Home() {
-  const news = await client.fetch(newsQuery, { next: { revalidate: 60 } })
+  const news = await client.fetch(newsQuery, { cache: 'no-store'  })
   return (
     <main className={styles.main}>
         {news.map((post,i) => (
