@@ -8,7 +8,7 @@ const newsQuery = `*[_type == "news"]{
 }`
 
 export default async function Home() {
-  const news = await client.fetch(newsQuery, { cache: 'no-store'  })
+  const news = await client.fetch(newsQuery)
   return (
     <main className={styles.main}>
         {news.map((post,i) => (
